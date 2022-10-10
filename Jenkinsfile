@@ -43,7 +43,7 @@ catch (e) {
   } 
 finally {
     // Success or failure, always send notifications
-    notifyBuild(currentBuild.result)
+    slacknotifications(currentBuild.result)
   }
 	
 } //Node Closing
