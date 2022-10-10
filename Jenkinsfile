@@ -1,8 +1,7 @@
 node{
     
     def mavenHome = tool name: "maven3.8.4"
-    
- 
+	
    properties([buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '5', daysToKeepStr: '', numToKeepStr: '5')), pipelineTriggers([pollSCM('* * * * *')])])
     
    echo "The Job name is: ${env.JOB_NAME}"
@@ -10,7 +9,7 @@ node{
    echo "Workspace path is: ${env.WORKSPACE}"
    echo "The Node Lebel is: ${env.NODE_LABELS}"
   
-	try slacknotifications("STARTED"){
+try slacknotifications("STARTED"){
 	
 stage('CheckoutCode'){
 git branch: 'development', credentialsId: 'b547e82b-1049-4296-9b5b-08d9f1e3cfe5', url: 'https://github.com/ranjit2489/maven-web-application.git'
@@ -33,9 +32,10 @@ stage('DeployAplicationToTomcatServer'){
 sshagent(['16104a0b-d5da-4cca-bc0b-4c1a711fc6c3']) {
     sh "scp -o StrictHostKeyChecking=no target/maven-web-application.war ec2-user@13.232.242.193:/opt/apache-tomcat-9.0.65/webapps/"
 }
-}
-  */
+} */
+  
 } //try closing	
+	
 catch (e) {
     // If there was an exception thrown, the build failed
     currentBuild.result = "FAILURE"
