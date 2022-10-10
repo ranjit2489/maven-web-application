@@ -10,7 +10,7 @@ node{
    echo "The Node Lebel is: ${env.NODE_LABELS}"
   
 try{
-	
+	slacknotifications("STARTED")
 stage('CheckoutCode'){
 git branch: 'development', credentialsId: 'b547e82b-1049-4296-9b5b-08d9f1e3cfe5', url: 'https://github.com/ranjit2489/maven-web-application.git'
 }
