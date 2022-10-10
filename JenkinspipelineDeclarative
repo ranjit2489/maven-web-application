@@ -3,7 +3,7 @@ pipeline{
 agent any
 
 parameters {
-  choice choices: ['development', 'master', 'qa'], description: 'Select the Branch', name: 'Branch Name'
+  choice choices: ['development', 'master', 'qa'], description: 'Select the Branch', name: 'BranchName'
 }
 
 tools{
@@ -23,7 +23,7 @@ stages{//Get the code form GitHUb
 	stage('CheckoutCode'){
 	steps{
     slacknotifications("STARTED")
-	    git branch: "${params.Branch Name}", credentialsId: 'b547e82b-1049-4296-9b5b-08d9f1e3cfe5', url: 'https://github.com/ranjit2489/maven-web-application.git'
+	    git branch: "${params.BranchName}", credentialsId: 'b547e82b-1049-4296-9b5b-08d9f1e3cfe5', url: 'https://github.com/ranjit2489/maven-web-application.git'
 	}
 	}
 
